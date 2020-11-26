@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace laba3
 {
@@ -133,14 +133,20 @@ namespace laba3
             double[,] result = new double[matrix1.Height, matrix2.Width];
             try
             {
-                if (matrix1.Width != matrix2.Height) throw new Exception("Ширина первой матрицы не равна высоте второй");
+                if (matrix1.Width != matrix2.Height)
+                {
+                    throw new Exception("Ширина первой матрицы не равна высоте второй");
+                }
 
                 for (int i = 0; i < matrix1.Height; i++)
                 {
                     for (int j = 0; j < matrix2.Width; j++)
                     {
                         result[i, j] = 0;
-                        for (int glass = 0; glass < matrix1.Width; glass++) result[i, j] += matrix1[i, glass] * matrix2[glass, j];
+                        for (int glass = 0; glass < matrix1.Width; glass++)
+                        {
+                            result[i, j] += matrix1[i, glass] * matrix2[glass, j];
+                        }
                     }
                 }
 
@@ -164,7 +170,10 @@ namespace laba3
 
                 for (int i = 0; i < matrix1.Height; i++)
                 {
-                    for (int j = 0; j < matrix2.Width; j++) result[i, j] = matrix1[i, j] + matrix2[i, j];
+                    for (int j = 0; j < matrix2.Width; j++)
+                    {
+                        result[i, j] = matrix1[i, j] + matrix2[i, j];
+                    }
                 }
 
                 return new MyMatrix(result);
@@ -183,7 +192,10 @@ namespace laba3
 
             for (int i = 0; i < Width; i++)
             {
-                for (int j = 0; j < Height; j++) result[i, j] = this.matrix[j, i];
+                for (int j = 0; j < Height; j++)
+                {
+                    result[i, j] = this.matrix[j, i];
+                }
             }
 
             return result;
@@ -197,16 +209,17 @@ namespace laba3
         {
             String text = "";
             if (this.matrix == null) return "Матрица пуста";
-            for (int i = 0; i < Height; i++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int i = 0; i < Height; i++)
                 {
-                    text += this.matrix[i, j] + "\t";
+                    for (int j = 0; j < Width; j++)
+                    {
+                        text += this.matrix[i, j] + "\t";
+                    }
+
+                    text += "\n";
                 }
-
-                text += "\n";
             }
-
             return text;
         }
 
